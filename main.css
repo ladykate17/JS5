@@ -1,0 +1,25 @@
+/* CSS DOCUMENT */
+body {
+	background-color: #DFF0EF;
+	color: #333;
+}
+
+h1 {
+	margin-bottom: 0px;
+}
+
+.sub-head {
+	margin: 0px;
+	font-size: 13px;
+}
+
+.container {
+	margin: 100px auto;
+	width: 70%;
+	height: 60%;
+	background: white;
+	padding: 30px;
+	border-radius: 8px;
+	border: 4px solid #DFDFDF;
+
+}
