@@ -1,7 +1,7 @@
 // JS DOCUMENT
 $( document ).ready(function() {
 
-	$('.editable').on('mouseover', function(){ // change the background to gray
+	$('.editable').on('mouseover', function(){
 		$(this).addClass('BG-change');
 
 		$('.BG-change').css({
@@ -19,22 +19,28 @@ $( document ).ready(function() {
 
 
 	$('.editable').on('click', function(){
+	
+	$('.editable').after('<div class="btn-wrap"><button class="save">save</button><button class="cancel important">cancel</button></div>').replaceWith('<input type="text" name="amount" value="' + $(this).text() + '"/>');
 
-		// $('.editable').blur('<input type="text">' '</input>');
-		var t = $('.editable').text(); // gets current paragraph value
-		$(this).html($('<input/>',{'value' : t}).val(t)); // creates input
-
-
-		var pHeight = $(this).height();
-
-		$('input').css({
-			'width'	: '100%',
-			'font-size' : '0.8em',
-			'height': pHeight,
-			'cols' : '30'
+		var save = $('.save').on('click', function(){
+			$('.editable').replaceWith('<p class="editable">' + this.text() + '</p>');
+			console.log('save clicked');
 		})
 
-		console.log($('.editable').after('<button>save</button><button class="important">cancel</button>').val());
+		var cancel = $('.cancel').on('click', function(event){
+			$('.editable').removeClass('.btn-wrap').remove('input');
+			console.log('cancel clicked');
+		})
+
+		// var pHeight = $().height();
+
+		$('input').css({
+			'margin' : '20px 0px 10px',
+			'width'	: '95%',
+			'font-size' : '0.8em',
+			'flex-wrap' : 'wrap',
+			'overflow' : 'hidden'
+		})
 
 		$('button').css({
 			'box-shadow' : 'none',
@@ -54,21 +60,4 @@ $( document ).ready(function() {
 	});
 
 
-
-
-// // Sample Code
-// $('#tbl').on('click','.xx',function() {
-//     $(this).siblings().each(
-//         function(){
-//             // if the td elements contain any input tag
-//             if ($(this).find('input').length){
-//                 // sets the text content of the tag equal to the value of the input
-//                 $(this).text($(this).find('input').val());
-//             }
-//             else {
-//                 // removes the text, appends an input and sets the value to the text-value
-//                 var t = $(this).text();
-//                 $(this).html($('<input />',{'value' : t}).val(t));
-//             }
-//         });
 });
